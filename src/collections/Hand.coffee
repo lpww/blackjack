@@ -13,7 +13,8 @@ class window.Hand extends Backbone.Collection
   #this is a method for hand
   hit: ->
     #this.add() - basically adds a card from the deck to the hand.
-    @push(@deck.pop())
+    if @scores()[0] < 21
+      @push(@deck.pop())
     # return @
 
   hasAce: -> @reduce (memo, card) ->

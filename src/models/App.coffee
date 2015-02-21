@@ -18,11 +18,6 @@ class window.App extends Backbone.Model
       @dealerGame()
     ), this
 
-    #dealerHand stand
-    @get('dealerHand').on 'stand', (->
-      console.log 'hey there'
-    ), this
-
   dealerGame : ->
     if @get('dealerHand').scores()[0] <= 21
       if @get('dealerHand').scores()[0] < 17
@@ -42,6 +37,8 @@ class window.App extends Backbone.Model
     @get('dealerHand').reset()
     @get('dealerHand').hit().flip()
     @get('dealerHand').hit()
+
+    # console.log @get('deck').length
 
 ###
 
