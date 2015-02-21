@@ -27,3 +27,4 @@ class window.Deck extends Backbone.Collection
       # passing this as a reference to the deck
   dealDealer: -> new Hand [@pop().flip(), @pop()], @, true
 
+

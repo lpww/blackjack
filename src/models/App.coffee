@@ -33,12 +33,17 @@ class window.App extends Backbone.Model
     else
       console.log "dealer bust's a nut"
 
+  newGame : ->
+    #playerHand reset for newGame
+    @get('playerHand').reset()
+    @get('playerHand').hit()
+    @get('playerHand').hit()
+    #dealerHand reset for newGame
+    @get('dealerHand').reset()
+    @get('dealerHand').hit().flip()
+    @get('dealerHand').hit()
+
 ###
-  Player Reset
-    - create an event on the view for new Game
-    - create a trigger that if event click was set - to reset game
-      - to set('dealerHand', deck.dealPlayer())
-      - to set('playerHand', deck.playerHandPlayer())
 
   Dealer Stands - Calculate who won
     // Put winning score in Green
