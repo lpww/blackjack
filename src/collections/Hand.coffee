@@ -15,7 +15,7 @@ class window.Hand extends Backbone.Collection
     #this.add() - basically adds a card from the deck to the hand.
     if @scores()[0] < 21
       @push(@deck.pop())
-    # return @
+    @trigger 'checkHand'
 
   hasAce: -> @reduce (memo, card) ->
     #this will be a reduce function

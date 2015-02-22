@@ -1,16 +1,58 @@
+body {
+  margin: 30px;
+  margin-top: 300px;
+  background-image: url('http://bkleader.com/images/table_blackjack.png');
+  background-color: #000;
+  background-position: center;
+  color: #FFF;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.background-image {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+h2 {
+  font-family: 'Ubuntu', sans-serif, Helvetica;
+  font-weight: 800;
+  font-size: 24px;
+  position: relative;
+}
+h2 span{
+  font-family: 'Ubuntu', sans-serif, Helvetica;
+  font-weight: 300;
+  font-size: 24px;
+  position: relative;
+}
 .card {
   float: left;
   border: solid 1px black;
-  width: 100px;
+  width: 120px;
   border-radius: 5px;
-  height: 140px;
+  height: 167px;
   margin-right: 20px;
+}
+.card img{
 }
 
 .covered {
-  background-color: black;
+  background-image: url('../img/card-back.png');
+}
+.covered img{
+  display: none;
 }
 
 .hand {
   overflow: auto;
+}
+.player-hand-container {
+
+}
+.dealer-hand-container {
+
 }

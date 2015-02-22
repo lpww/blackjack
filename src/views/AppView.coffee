@@ -14,10 +14,14 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @render()
+    @model.get('playerHand').on 'add remove change', => @render()
+    @model.get('dealerHand').on 'add remove change', => @render()
+
 
   render: ->
     @$el.children().detach()
     @$el.html @template()
+    if @model.get('playerHand').scores()[0] > 21
+      $('.hit-button').css 'display', 'none'
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
-

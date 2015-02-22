@@ -18,28 +18,52 @@ class window.App extends Backbone.Model
       @dealerGame()
     ), this
 
+    @get('playerHand').on 'checkHand', (->
+      @playerHit()
+    ), this
+
   dealerGame : ->
     if @get('dealerHand').scores()[0] <= 21
       if @get('dealerHand').scores()[0] < 17
         @get('dealerHand').hit()
         @trigger 'endRound'
       else
-        console.log "dealer stands"
+        @endGame()
     else
-      console.log "dealer bust's a nut"
+      @endGame()
 
   newGame : ->
     #playerHand reset for newGame
     @get('playerHand').reset()
     @get('playerHand').hit()
     @get('playerHand').hit()
+    # @get('playerHand').hit()
     #dealerHand reset for newGame
     @get('dealerHand').reset()
-    @get('dealerHand').hit().flip()
+    @get('dealerHand').hit()
+    @get('dealerHand').models[0].flip()
     @get('dealerHand').hit()
 
     # console.log @get('deck').length
 
+  playerHit : ->
+     if @get('playerHand').scores()[0] > 21
+      alert 'you lose!'
+
+  endGame : ->
+    # check both the DealerHand.score and playerHand Score
+    # if dealerScore has 21 or is greater than PlayerHand Score
+      #dealer wins
+    # else if playerScore is 21 or is greater than dealerScore
+      #playerWins
+    if @get('dealerHand').scores()[0] > 21
+      alert 'you win!'
+    else if @get('playerHand').scores()[0] <= 21 and @get('dealerHand').scores()[0] < @get('playerHand').scores()[0]
+      alert 'player wins!'
+    else if @get('playerHand').scores()[0] <= 21 and @get('dealerHand').scores()[0] > @get('playerHand').scores()[0]
+      alert 'dealer wins!'
+    else
+      alert 'draw... wtf?!'
 ###
 
   Dealer Stands - Calculate who won
